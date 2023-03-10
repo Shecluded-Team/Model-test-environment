@@ -1,30 +1,40 @@
 import numpy as np
 import pickle
 import streamlit as st
+import os
 
-#loading the saved model
-loaded_model=pickle.load(open('C:/Users/Public/Documents/streamlit/first_model.pkl','rb'))
+# Determine the absolute path to the directory containing this script
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-#creating a function for prediction
+# Construct the path to the model file
+MODEL_PATH = os.path.join(BASE_DIR, 'first_model.pkl')
+
+# Load the saved model
+with open(MODEL_PATH, 'rb') as f:
+    loaded_model = pickle.load(f)
+
+# Define a function for prediction
 def loan_model(input_data):
-
-    # changing the input data to a numpy array
+    # Convert input data to a NumPy array
     input_data_as_np_array = np.asarray(input_data)
 
-    #reshape the array as we are predicting for one instance
+    # Reshape the array as we are predicting for one instance
     input_data_reshaped = input_data_as_np_array.reshape(1, -1)
+
+    # Make a prediction using the loaded model
     prediction = loaded_model.predict(input_data_reshaped)
-    print(prediction)
+
     if (prediction[0] == 0):
         return "Not Eligible for loan"
     else:
         return "Eligible for loan"
 
+# Define the main function for the Streamlit app
 def main():
-    #give a title to the web application
+    # Set the title of the Streamlit app
     st.title('Loan Model For Shecluded')
 
-    #getting input data from user
+    # Get input data from the user
     employment_status = st.text_input('Enter Employment Status')
     marital_status = st.text_input('Enter Marital Status')
     state = st.text_input('Enter you State')
@@ -34,26 +44,24 @@ def main():
     gender = st.text_input('Input your Gender')
     loan_duration = st.text_input('what is the loan duration (Months)')
 
+    # Convert input data to integers
+    employment_status = int(employment_status)
+    marital_status = int(marital_status)
+    state = int(state)
+    requested_amount = int(requested_amount)
+    age = int(age)
+    final_sal = int(final_sal)
+    gender = int(gender)
+    loan_duration = int(loan_duration)
 
-    #convert to int
-    employment_status=int(employment_status)
-    marital_status=int(marital_status)
-    state=int(state)
-    requested_amount=int(requested_amount)
-    age=int(age)
-    final_sal=int(final_sal)
-    gender=int(gender)
-    loan_duration=int(loan_duration)
-
-    #code for prediction
-    result=''
-
-    #creating a button for prediction
+    # Make a prediction using the loan_model function
+    result = ''
     if st.button('Loan Eligibility Result'):
-        result= loan_model([employment_status,marital_status,state,requested_amount,age,final_sal,gender,loan_duration])
+        result = loan_model([employment_status, marital_status, state, requested_amount, age, final_sal, gender, loan_duration])
+
+    # Display the prediction result to the user
     st.success(result)
 
-
-if __name__== '__main__':
+# Call the main function to start the Streamlit app
+if __name__ == '__main__':
     main()
-
