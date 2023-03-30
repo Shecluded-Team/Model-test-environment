@@ -37,10 +37,10 @@ def main():
     # Define a dictionary mapping the encoded values to their respective labels
     employment_status_dict = {1: 'Business', 0: 'Employee'}
     marital_status_dict = {1: 'Single', 2: 'Married', 3: 'Divorced', 4: 'Widow'}
-    state_dict = {0: ‘Abia’ , 2: ‘Adamawa’, 19: ‘Akwa-Ibom’, 4: ‘Anambra’, 7: ‘Bauchi’, 6: ‘Bayelsa’, 5: ‘Benue’, 36: ‘Borno’, 9: ‘Cross-River’,10: ‘Delta’,
-                  11: ‘Ebonyi’, 12: ‘Edo’, 13: ‘Ekiti’, 14: ‘Enugu’ , 15: ‘Gombe’ , 16: ‘Imo’ , 17: ‘Jigawa’ , 18: ‘Kaduna’, 3: ‘Kano’ , 21: ‘Katsina’,
-                  20: ‘Kebbi’, 22: ‘Kogi’ , 23: ‘Kwara’ , 24: ‘Lagos’ , 25: ‘Nasarawa’ , 26: ‘Niger’ , 27: ‘Ogun’, 28: ‘Ondo’ , 29: ‘Osun’, 30: ‘Oyo’,
-                  31: ‘Plateau’, 32: ‘Rivers’, 33: ‘Sokoto’ , 35: ‘Taraba’, 34: ‘Yobe’ , 8: ‘Zamfara’, 1: ‘FCT-Abuja’}
+    state_dict = {0: 'Abia' , 2: 'Adamawa', 19: 'Akwa-Ibom', 4: 'Anambra', 7: 'Bauchi', 6: 'Bayelsa', 5: 'Benue', 36: 'Borno', 9: 'Cross-River',10: 'Delta',
+                  11: 'Ebonyi', 12: 'Edo', 13: 'Ekiti', 14: 'Enugu' , 15: 'Gombe' , 16: 'Imo' , 17: 'Jigawa' , 18: 'Kaduna', 3: 'Kano' , 21: 'Katsina',
+                  20: 'Kebbi', 22: 'Kogi' , 23: 'Kwara' , 24: 'Lagos' , 25: 'Nasarawa' , 26: 'Niger' , 27: 'Ogun', 28: 'Ondo' , 29: 'Osun', 30: 'Oyo',
+                  31: 'Plateau', 32: 'Rivers', 33: 'Sokoto' , 35: 'Taraba', 34: 'Yobe' , 8: 'Zamfara', 1: 'FCT-Abuja'}
     gender_dict = {1: 'Female'}
 
     # Get input data from the user
