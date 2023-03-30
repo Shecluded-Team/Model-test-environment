@@ -34,24 +34,33 @@ def main():
     # Set the title of the Streamlit app
     st.title('Loan Model For Shecluded')
 
+    # Define a dictionary mapping the encoded values to their respective labels
+    employment_status_dict = {1: 'Business', 0: 'Employee'}
+    marital_status_dict = {1: 'Single', 2: 'Married', 3: 'Divorced', 4: 'Widow'}
+    state_dict = {0: ‘Abia’ , 2: ‘Adamawa’, 19: ‘Akwa-Ibom’, 4: ‘Anambra’, 7: ‘Bauchi’, 6: ‘Bayelsa’, 5: ‘Benue’, 36: ‘Borno’, 9: ‘Cross-River’,10: ‘Delta’,
+                  11: ‘Ebonyi’, 12: ‘Edo’, 13: ‘Ekiti’, 14: ‘Enugu’ , 15: ‘Gombe’ , 16: ‘Imo’ , 17: ‘Jigawa’ , 18: ‘Kaduna’, 3: ‘Kano’ , 21: ‘Katsina’,
+                  20: ‘Kebbi’, 22: ‘Kogi’ , 23: ‘Kwara’ , 24: ‘Lagos’ , 25: ‘Nasarawa’ , 26: ‘Niger’ , 27: ‘Ogun’, 28: ‘Ondo’ , 29: ‘Osun’, 30: ‘Oyo’,
+                  31: ‘Plateau’, 32: ‘Rivers’, 33: ‘Sokoto’ , 35: ‘Taraba’, 34: ‘Yobe’ , 8: ‘Zamfara’, 1: ‘FCT-Abuja’}
+    gender_dict = {1: 'Female'}
+
     # Get input data from the user
-    employment_status = st.text_input('Enter Employment Status')
-    marital_status = st.text_input('Enter Marital Status')
-    state = st.text_input('Enter you State')
+    employment_status = st.selectbox('Employment Status', list(employment_status_dict.values()))
+    marital_status = st.selectbox('Marital Status', list(marital_status_dict.values()))
+    state = st.selectbox('State', list(state_dict.values()))
     requested_amount = st.text_input('Enter Requested Amount needed')
     age = st.text_input('How Old are you?')
     final_sal = st.text_input('What is your Monthly Income?')
-    gender = st.text_input('Input your Gender')
-    loan_duration = st.text_input('what is the loan duration (Months)')
+    gender = st.selectbox('Gender', list(gender_dict.values()))
+    loan_duration = st.text_input('What is the loan duration (Months)?')
 
     # Convert input data to integers
-    employment_status = int(employment_status)
-    marital_status = int(marital_status)
-    state = int(state)
+    employment_status = list(employment_status_dict.keys())[list(employment_status_dict.values()).index(employment_status)]
+    marital_status = list(marital_status_dict.keys())[list(marital_status_dict.values()).index(marital_status)]
+    state = list(state_dict.keys())[list(state_dict.values()).index(state)]
     requested_amount = int(requested_amount)
     age = int(age)
     final_sal = int(final_sal)
-    gender = int(gender)
+    gender = list(gender_dict.keys())[list(gender_dict.values()).index(gender)]
     loan_duration = int(loan_duration)
 
     # Make a prediction using the loan_model function
@@ -65,3 +74,4 @@ def main():
 # Call the main function to start the Streamlit app
 if __name__ == '__main__':
     main()
+
